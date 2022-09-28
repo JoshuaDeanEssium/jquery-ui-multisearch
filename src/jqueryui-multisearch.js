@@ -202,6 +202,13 @@
          inputPosition: 'end',
 
          /*
+         *  This will force the user to manually have to choose an item from the dropdown list. Reason being is if there is 
+         *  1 result that matches your query, it will always autocorrect the first result in the list instead of allowing you
+         *  to add a new one with the current input
+         */
+         ignoreAutocomplete: false,
+
+         /*
          *  For each field defined in searchAttrs, search for the input text using the function below.  This is used
          *  for both local cache searches and hit highlighting.  It should match with the search method from the remote.
          *  The default is to look for the search string anywhere in the target field.  If you want to match only from
@@ -666,7 +673,7 @@
 
                if ( this.search_text.length > 0 ) {
 
-                  if( this.optionIndex > -1 ) {
+                  if( this.optionIndex > -1 && !this.options.ignoreAutocomplete) {
                      this._addSelectedItem();
                   } else {
 
